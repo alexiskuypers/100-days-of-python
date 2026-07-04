@@ -1,4 +1,5 @@
 from art import art_secret_auction
+import os
 
 
 def ask_secret_auction():
@@ -17,6 +18,11 @@ def restart_choice():
         if choice in ("yes", "no"):
             break
     return choice
+
+
+def clear_screen():
+    os.system("cls" if os.name == "nt" else "clear")
+
 
 
 secret_auction = {}
@@ -47,6 +53,7 @@ def orchestration():
         restart = restart_choice()
         if restart == "no":
             break
+        clear_screen()
     name, max_bid = winner_auction(secret_auction)
     output(name, max_bid)
 
